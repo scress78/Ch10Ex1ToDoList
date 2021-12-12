@@ -8,6 +8,42 @@
 </head>
 <body>
     <div class="container">
+        <!--Add navbar similar to Ch16 Views/Shared/_Layout.cshtml-->
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu"
+                    aria-controls="menu" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <ul class="navbar-nav mr-auto">
+                <!-- class elements stripped from home temporarily-->
+                <li>
+                    <a class="nav-link" asp-action="Index" asp-controller="Home" asp-area="">
+                        <span class="fas fa-home"></span>&nbsp;Home
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav ml-auto">
+                <!-- Login buttons and links -->
+                <!--note currently no 'log-out will need if statements for when user is logged in'-->
+                <!--stripped class elements-->
+                <li>
+                    <a asp-action="Register" asp-controller="Account"
+                       asp-area="" class="nav-link">
+                        <span class="fas fa-edit"></span>&nbsp;Register
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a asp-action="Login" asp-controller="Account"
+                       asp-area="" class="btn btn-outline-light">Log In</a>
+                </li>
+            </ul>
+
+        </nav>
+
+
+        <!--initial header-->
         <header class="bg-primary text-white text-center">
             <h1 class="m-3 p-3">My Tasks</h1>
         </header>
