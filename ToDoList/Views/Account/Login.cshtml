@@ -1,0 +1,27 @@
+﻿<!--https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/compiler-messages/cs0246-->
+<!--Needs to be bound somehow to LoginViewModel, how is this done in bookstore?-->
+<!--issue here was within LoginViewModel,, under namespace be sure it's ToDoList.Models NOT ToDoList.Models.ViewModels-->
+@model LoginViewModel
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login</h2>
+
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<!--not sure how below 'Model.ReturnUrl' (note needs at symbol before) works currently, commenting out and replacing for now-->
+<!--<form method="post" asp-action="LogIn" asp-route-returnUrl="Model.ReturnUrl">-->
+<form>
+    <div class="form-group row">
+        <div class="col-sm-2"><label>Username:</label></div>
+        <div class="col-sm-4">
+            <input type="text" asp-for="Username"
+                   class="form-control" />
+        </div>
+        <div class="col">
+            <span asp-validation-for="Username"
+                  class="text-danger"></span>
+        </div>
+    </div>
+
+</form>
