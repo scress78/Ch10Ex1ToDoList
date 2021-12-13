@@ -19,6 +19,14 @@ namespace ToDoList.Controllers
             return View(model);
         }
 
+        [HttpGet] //make a new url work this way.. first make a model, then a view, then configure in controller
+        public IActionResult Register()
+        {
+            return View();
+        }
+
+
+
         public IActionResult Index()
         {
             return View();
