@@ -8,9 +8,21 @@ namespace ToDoList.Controllers
 {
     public class HomeController : Controller
     {
+        
         private ToDoContext context;
         public HomeController(ToDoContext ctx) => context = ctx;
 
+        // seems to be some error here converting to database, will look soon
+
+
+        // repository seems very important to make this all work, as semi-related in below article
+        // https://dotnettutorials.net/lesson/repository-design-pattern-csharp/
+        //private Repository<ToDo> data { get; set; }
+        //public HomeController(ToDoContext ctx) => data = new Repository<ToDo>(ctx);
+
+
+
+        // filter currently making program error out so commenting out for now.
         public IActionResult Index(string id)
         {
             // load current filters and data needed for filter drop downs in ViewBag
@@ -41,6 +53,7 @@ namespace ToDoList.Controllers
             var tasks = query.OrderBy(t => t.DueDate).ToList();
             return View(tasks);
         }
+        
 
         public IActionResult Add()
         {
