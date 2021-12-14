@@ -1,4 +1,11 @@
-﻿<!DOCTYPE html>
+﻿@{ 
+    // use current controller or area to determine if tab is active
+    // needed likely
+    var current = ViewContext.RouteData.Values["area"]?.ToString() ??
+        ViewContext.RouteData.Values["controller"]?.ToString();
+}
+
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -26,18 +33,44 @@
 
             <ul class="navbar-nav ml-auto">
                 <!-- Login buttons and links -->
-                <!--note currently no 'log-out will need if statements for when user is logged in'-->
-                <!--stripped class elements-->
-                <li>
-                    <a asp-action="Register" asp-controller="Account"
-                       asp-area="" class="nav-link">
-                        <span class="fas fa-edit"></span>&nbsp;Register
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a asp-action="Login" asp-controller="Account"
-                       asp-area="" class="btn btn-outline-light">Log In</a>
-                </li>
+                @using Microsoft.AspNetCore.Identity
+                @inject SignInManager<User> signInManager
+
+                <!-- user still not being signed in, why?  returns false? below looks very similar to our example-->
+                <!--https://stackoverflow.com/questions/61271703/signinmanager-issignedinuser-returns-false-->
+                <!-- fixed!, above was the problem-->
+                @if (signInManager.IsSignedIn(User))
+                {
+                    // error here actually making this work: InvalidOperationException: No service for type
+                    // trouble shooting Dependency Injections
+                    // Staring here
+                    // https://stackoverflow.com/questions/61342631/no-service-for-type-type-has-been-registered
+                    // signed-in user - Log Out button and username
+                    <li class="nav-item">
+                        <form method="post" asp-action="LogOut" asp-controller="Account"
+                              asp-area="">
+                            <input type="submit" value="Log Out"
+                                   class="btn btn-outline-light" />
+                            <span class="text-light">@User.Identity.Name</span>
+                        </form>
+                    </li>
+                }
+                else
+                {
+                    var action = ViewContext.RouteData.Values["action"]?.ToString();
+
+                    <li>
+                        <a asp-action="Register" asp-controller="Account"
+                           asp-area="" class="nav-link @Nav.Active("Register", action)">
+                            <span class="fas fa-edit"></span>&nbsp;Register
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a asp-action="Login" asp-controller="Account"
+                           asp-area="" class="btn btn-outline-light">Log In</a>
+                    </li>
+                }
+
             </ul>
 
         </nav>
