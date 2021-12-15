@@ -1,0 +1,49 @@
+﻿@model CartViewModel
+
+@{
+    ViewData["Title"] = " | Cart";
+}
+
+<h1>Your Cart</h1>
+
+<!--Only trying to get index setup for now. no functionality-->
+<!--thought it would be cool to be able to add something like '1 Month Premium Subscription' to Cart-->
+<!--taken from Ch16 Views/Cart/Index-->
+
+<!--
+<form asp-action="Clear" method="post">
+    <ul class="list-group mb-4">
+        <li class="list-group-item">
+            <div class="row">
+                <div class="col">
+    
+                </div>
+                <div class="col">
+                    <div class="float-right">
+                        <a asp-action="Checkout" class="btn btn-primary">Checkout</a>
+                        <button type="submit" class="btn btn-primary">Clear Cart</button>
+                        <a asp-action="List" asp-controller="Book"
+                           asp-all-route-data="">Back to Shopping</a>
+                    </div>
+
+                </div>
+            </div>
+        </li>
+    </ul>
+</form>
+-->
+<form asp-action="Remove" method="post">
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>Title</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Subtotal</th>
+                <th></th>
+            </tr>
+        </thead>
+
+
+    </table>
+</form>
