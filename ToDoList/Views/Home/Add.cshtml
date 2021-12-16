@@ -16,7 +16,7 @@
         <input type="text" asp-for="Description" class="form-control">
     </div>
 
-   <div class="form-group">
+    <div class="form-group">
         <label asp-for="CategoryId">Category:</label>
         <select asp-for="CategoryId" class="form-control"
                 asp-items="@(new SelectList(ViewBag.Categories, "CategoryId", "Name"))">
@@ -35,6 +35,11 @@
                 asp-items="@(new SelectList(ViewBag.Statuses, "StatusId", "Name"))">
             <option value=""></option>
         </select>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="NoteContents">Note Contents:</label>
+        <input type="text" asp-for="NoteContents" class="form-control">
     </div>
 
 

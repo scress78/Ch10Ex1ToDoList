@@ -22,9 +22,10 @@ namespace ToDoList.Models
 
         [Required(ErrorMessage = "Please select a status.")]
         public string StatusId { get; set; }
-        public Status Status { get; set; } 
+        public Status Status { get; set; }
 
-
+        [Required(ErrorMessage = "Please enter in the note contents.")]
+        public string NoteContents { get; set; }
         public bool Overdue => 
             StatusId == "open" && DueDate < DateTime.Today;
     }
