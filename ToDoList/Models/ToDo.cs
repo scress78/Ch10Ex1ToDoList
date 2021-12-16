@@ -7,6 +7,9 @@ namespace ToDoList.Models
     {
         public int Id { get; set; }
 
+        [Required(ErrorMessage = "Please enter a note name.")]
+        public string NoteName { get; set; }
+
         [Required(ErrorMessage = "Please enter a description.")]
         public string Description { get; set; }
 
@@ -21,6 +24,8 @@ namespace ToDoList.Models
         public string StatusId { get; set; }
         public Status Status { get; set; }
 
+        [Required(ErrorMessage = "Please enter in the note contents.")]
+        public string NoteContents { get; set; }
         public bool Overdue => 
             StatusId == "open" && DueDate < DateTime.Today;
     }

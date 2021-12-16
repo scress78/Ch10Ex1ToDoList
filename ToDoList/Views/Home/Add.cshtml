@@ -7,6 +7,11 @@
 <form asp-action="Add" method="post">
 
     <div class="form-group">
+        <label asp-for="NoteName">Note Name:</label>
+        <input type="text" asp-for="NoteName" class="form-control">
+    </div>
+
+    <div class="form-group">
         <label asp-for="Description">Description:</label>
         <input type="text" asp-for="Description" class="form-control">
     </div>
@@ -31,6 +36,15 @@
             <option value=""></option>
         </select>
     </div>
+
+    <div class="form-group">
+        <label asp-for="NoteContents">Note Contents:</label>
+        <input type="text" asp-for="NoteContents" class="form-control">
+    </div>
+
+
+
+
 
     <button type="submit" class="btn btn-primary">Add</button>
     <a asp-action="Index" class="btn btn-primary">Cancel</a>
