@@ -34,10 +34,7 @@ namespace ToDoList.Controllers
 
             // get ToDo objects from database based on current filters
             IQueryable<ToDo> query = context.ToDos
-                .Include(t => t.Category).Include(t => t.Status);
-            if (filters.HasCategory) {
-                query = query.Where(t => t.CategoryId == filters.CategoryId);
-            }
+                .Include(t => t.Status);
             if (filters.HasStatus) {
                 query = query.Where(t => t.StatusId == filters.StatusId);
             }

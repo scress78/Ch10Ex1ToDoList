@@ -17,8 +17,8 @@ namespace ToDoList.Models
         public DateTime? DueDate { get; set; }
 
         [Required(ErrorMessage = "Please select a category.")]
-        public string CategoryId { get; set; }
-        public Category Category { get; set; }
+        public int CategoryId { get; set; }   // Foreign key property
+        public Category Category { get; set; } // Navigation property??
 
         [Required(ErrorMessage = "Please select a status.")]
         public string StatusId { get; set; }
